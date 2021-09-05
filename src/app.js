@@ -2,7 +2,7 @@ const { Client, Intents } = require("discord.js");
 const { token } = require("../config.json");
 
 // Create a new client instance
-const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS,Intents.FLAGS.GUILD_MESSAGES] });
 
 // When the client is ready, run this code (only once)
 client.once("ready", () => {
@@ -21,7 +21,7 @@ client.on("interactionCreate", async (interaction) => {
       `Server name: ${interaction.guild.name}\n Total members: ${interaction.guild.memberCount}`
     );
   } else if (commandName === "user") {
-    await interaction.reply("User info");
+		await interaction.reply(`Your tag: ${interaction.user.tag}\nYour id: ${interaction.user.id}`);
   }
 });
 
