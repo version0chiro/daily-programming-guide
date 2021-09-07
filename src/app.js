@@ -33,7 +33,7 @@ function randomInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 client.on("message", (msg) => {
-  if (msg.content === "ping") {
+  if (msg.content.toLowerCase() === "give me a question") {
     max = 444;
     min = 0;
 
@@ -45,7 +45,10 @@ client.on("message", (msg) => {
     web_link = data[randomNumber].link;
 
     msg.reply(
-      ` The Question for today is  from the topic ${topic} \n The Statement is ${statement} \n The link to the problem is ${web_link}`
+      `The Question for *today* is
+      from the topic ${topic} \n
+      The Statement is ${statement} \n
+      The link to the problem is ${web_link}`
     );
   }
 });
