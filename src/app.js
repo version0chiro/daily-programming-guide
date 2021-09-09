@@ -31,6 +31,8 @@ client.on("interactionCreate", async (interaction) => {
   }
 });
 function randomInteger(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 client.on("message", (msg) => {
@@ -68,16 +70,16 @@ client.on("message", (msg) => {
             ans[i] = data[i];
           }
         }
-        console.log(ans);
-        console.log(Object.keys(ans).length);
+        max = Object.keys(ans)[Object.keys(ans).length - 1];
+        min = Object.keys(ans)[0];
+        // console.log(Object.keys(ans).length);
         if (Object.keys(ans).length === 0) {
           msg.reply("No such topic exists");
         } else {
-          max = Object.keys(ans).length;
-          console.log(max);
-          min = 0;
-
           var randomNumber = randomInteger(min, max);
+          console.log(max);
+          console.log(min);
+
           console.log(randomNumber);
           console.log(ans[randomNumber]);
           topic = ans[randomNumber].topic;
@@ -104,7 +106,6 @@ client.on("message", (msg) => {
         //   `The Question for *today* is from the topic ${topic} \nThe Statement is ${statement} \nThe link to the problem is ${web_link}`
         // );
       }
-      console.log(msg.content.substr(24, 6));
     }
   }
 });
