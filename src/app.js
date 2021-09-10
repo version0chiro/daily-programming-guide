@@ -36,10 +36,10 @@ function randomInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 client.on("message", (msg) => {
-  if (msg.content.toLowerCase().substr(0, 23) === "#dsa give me a question") {
-    console.log(msg.content.substr(24));
+  if (msg.content.toLowerCase().substr(0, 10) === "#dsa give") {
+    console.log(msg.content.substr(10));
 
-    if (msg.content.length < 24) {
+    if (msg.content.length < 10) {
       max = Object.keys(data).length;
       console.log(max);
       min = 0;
@@ -56,10 +56,10 @@ client.on("message", (msg) => {
       );
     }
 
-    if (msg.content.length > 24) {
-      if (msg.content.substr(24, 6) === "-topic") {
-        console.log(msg.content.substr(31));
-        topic = msg.content.substr(31);
+    if (msg.content.length > 10) {
+      if (msg.content.substr(10, 6) === "-topic") {
+        console.log(msg.content.substr(17));
+        topic = msg.content.substr(17);
         console.log(topic);
         console.log(Object.keys(data));
 
